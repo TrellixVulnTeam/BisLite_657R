@@ -12388,3 +12388,99 @@ a {
     padding: 10px 0;
   }
 }
+
+.mainPortfolio {
+  padding: 0 5% 0 8.4%;
+}
+.mainPortfolio .portfolioListItems .portfolioListItem .portfolioLink {
+  border: none;
+  color: #000;
+  border-radius: 0;
+}
+.mainPortfolio .portfolioListItems .portfolioListItem .portfolioLink:hover {
+  background-color: #81e4ed;
+}
+.mainPortfolio .portfolioListItems .portfolioListItem .portfolioLink:focus {
+  background-color: #81e4ed;
+}
+.mainPortfolio .worksPhoto {
+  position: relative;
+  background-color: rgba(57, 62, 93, 0.7);
+  padding: 0;
+  overflow: hidden;
+  max-width: 220px;
+  margin: 5px;
+}
+.mainPortfolio .worksPhoto:not(:last-child) {
+  margin-right: 50px;
+}
+@media screen and (max-width: 1200px) {
+  .mainPortfolio .worksPhoto:not(:last-child) {
+    margin-right: 10px;
+  }
+}
+@media screen and (max-width: 991px) {
+  .mainPortfolio .worksPhoto {
+    max-width: 300px;
+    margin: 10px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .mainPortfolio .worksPhoto {
+    max-width: 230px;
+  }
+}
+@media screen and (max-width: 650px) {
+  .mainPortfolio .worksPhoto {
+    max-width: 200px;
+  }
+}
+@media screen and (max-width: 460px) {
+  .mainPortfolio .worksPhoto {
+    max-width: 300px;
+  }
+}
+@media screen and (max-width: 350px) {
+  .mainPortfolio .worksPhoto {
+    max-width: 220px;
+  }
+}
+.mainPortfolio .worksPhoto img {
+  width: 100%;
+  -webkit-transition: all 4s ease;
+  transition: all 4s ease;
+}
+.mainPortfolio .worksLink {
+  position: absolute;
+  width: 100%;
+  height: 90px;
+  bottom: 0;
+  z-index: 1;
+  opacity: 0;
+  transform: translate(0px, 70px);
+  -webkit-transform: translate(0px, 70px);
+  -moz-transform: translate(0px, 70px);
+  -o-transform: translate(0px, 70px);
+  -ms-transform: translate(0px, 70px);
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.mainPortfolio .worksLink a {
+  font-size: 40px;
+  color: #fff;
+  position: relative;
+  margin: 0 auto;
+  width: 100%;
+  top: 13px;
+}
+.mainPortfolio .worksPhoto:hover {
+  cursor: pointer;
+}
+.mainPortfolio .worksPhoto:hover .worksLink {
+  transform: translate(0px, 0px);
+  -webkit-transform: translate(0px, 0px);
+  -moz-transform: translate(0px, 0px);
+  -o-transform: translate(0px, 0px);
+  -ms-transform: translate(0px, 0px);
+  opacity: 1;
+}
