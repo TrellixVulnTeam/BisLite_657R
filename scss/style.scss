@@ -1,0 +1,14 @@
+@import "../node_modules/bootstrap/scss/bootstrap";
+@import "../node_modules/bootstrap/scss/variables";
+@import "base/reset";
+@import "base/typography";
+@import "utilities/mixins";
+@import "layout/header";
+@import "layout/home";
+@import "layout/footer";
+
+$theme-colors: (
+  "primary": #2aacc8,
+  "secondary": #81e4ed,
+  "light": #e8ebf1
+);

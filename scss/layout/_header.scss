@@ -1,0 +1,56 @@
+.mainNav {
+  padding: 24px 8% 39px 13.5%;
+  position: relative;
+
+  @include mQ(1500px) {
+    padding: 0;
+  }
+
+  .navSec {
+
+    #navbarSupportedContent {
+
+      .navListItems {
+        text-align: center;
+
+        @include mQ(993px) {
+          z-index: 10;
+          position: absolute;
+          right: -12px;
+          top: 48.5px;
+          background-color: #fff;
+          width: 200px;
+          text-align: center;
+          overflow: hidden;
+        }
+
+        @include mQ(1500px) {
+          padding-right: 0;
+        }
+
+        .navListItem {
+          padding-right: 48px;
+
+          @include mQ(1500px) {
+            padding-right: 0;
+          }
+
+          .navLink {
+
+            &:hover {
+              transition: 0.3s;
+              border-top: 4px solid $primary;
+            }
+
+            &:focus {
+              border: 1px solid $gray-400;
+              border-top: 4px solid $primary;
+              background-color: #fff;
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
