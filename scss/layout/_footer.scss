@@ -7,44 +7,45 @@
         padding: 0 2%;
         }
 
-        .contactList {
+    .contactList {
 
-          @include mQ(576px) {
-          padding: 20px 30px !important;
+      @include mQ(576px) {
+      padding: 20px 30px !important;
+      }
+    }
+
+    .mediaSection {
+
+        @include mQ(576px) {
+          text-align: center;
+        }
+
+        @include mQ(576px) {
+          padding: 15px 0;
         }
       }
 
-      .mediaSection {
+      .mediaDown {
 
-          @include mQ(576px) {
-            text-align: center;
-          }
+        @include mQ(1500px) {
+          padding: 0;
+        }
 
-          @include mQ(576px) {
-            padding: 15px 0;
-          }
-
-        .mediaDown {
+        a {
+          padding-right: 24px;
 
           @include mQ(1500px) {
-            padding: 0;
+            padding-right: 0;
           }
 
-          a {
-            padding-right: 24px;
+          img {
 
-            @include mQ(1500px) {
-              padding-right: 0;
-            }
-
-            img {
-
-              @include mQ(768px) {
-                max-width: 40px;
-              }
+            @include mQ(768px) {
+              max-width: 40px;
             }
           }
         }
+      }
 
         .mediaUp {
 
@@ -67,7 +68,6 @@
           }
         }
       }
-    }
 
     .contactLogo {
 

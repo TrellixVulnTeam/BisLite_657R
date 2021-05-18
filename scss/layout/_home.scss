@@ -1,5 +1,18 @@
 .mainBanner {
 
+  .carouselMain {
+    padding: 0 6.5% 0 8.5%;
+
+    @include mQ(1500px) {
+      padding: 0;
+    }
+
+    .carousel-inner {
+      padding: 0;
+      width: auto;
+    }
+  }
+
   .bannerText {
 
     @include mQ(1400px) {
@@ -102,9 +115,12 @@
     position: relative;
   	background-color: rgba(57, 62, 93, 0.7);
   	padding: 0;
-  	overflow: hidden;
     max-width: 220px;
   	margin: 5px;
+
+    &:hover {
+    	cursor: pointer;
+    }
 
     &:not(:last-child) {
       margin-right: 50px;
@@ -149,8 +165,7 @@
   }
 
   .worksLink {
-  	position: absolute;
-  	width: 100%;
+    position: absolute;
   	height: 90px;
   	bottom: 0;
   	z-index: 1;
@@ -174,10 +189,6 @@
   	margin: 0 auto;
   	width: 100%;
   	top: 13px;
-  }
-
-  .worksPhoto:hover {
-  	cursor: pointer;
   }
 
   .worksPhoto:hover .worksLink {
@@ -216,41 +227,45 @@
         padding-left: 30px;
       }
     }
+  }
 
-    .clientContainer {
+  .clientContainer {
 
-      @include mQ(1100px) {
+    @include mQ(1100px) {
+      padding: 0;
+    }
+
+    @include mQ(767px) {
+      text-align: center;
+    }
+
+      .clientLogo {
         padding: 0;
-      }
 
-      @include mQ(767px) {
-        text-align: center;
-      }
+        img {
 
-        .clientLogo {
-          padding: 0;
+          @include mQ(1200px) {
+            max-width: 130px;
+          }
 
-          img {
+          @include mQ(1100px) {
+            max-width: 120px;
+          }
 
-            @include mQ(1100px) {
-              max-width: 120px;
-            }
+          @include mQ(992px) {
+            max-width: 125px;
+          }
 
-            @include mQ(992px) {
-              max-width: 125px;
-            }
+          @include mQ(767px) {
+            max-width: 200px;
+          }
 
-            @include mQ(767px) {
-              max-width: 200px;
-            }
+          @include mQ(500px) {
+            max-width: 120px;
+          }
 
-            @include mQ(500px) {
-              max-width: 120px;
-            }
-
-            @include mQ(390px) {
-              max-width: 100px;
-            }
+          @include mQ(390px) {
+            max-width: 100px;
           }
         }
       }

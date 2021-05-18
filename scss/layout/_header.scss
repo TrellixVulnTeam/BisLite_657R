@@ -27,27 +27,28 @@
         @include mQ(1500px) {
           padding-right: 0;
         }
+      }
 
-        .navListItem {
-          padding-right: 48px;
+  .navListItem {
+    padding-right: 48px;
 
-          @include mQ(1500px) {
-            padding-right: 0;
-          }
+    @include mQ(1500px) {
+      padding-right: 0;
+    }
 
-          .navLink {
+    .navLink {
+      border-top: 4px solid transparent;
 
-            &:hover {
-              transition: 0.3s;
-              border-top: 4px solid $primary;
-            }
+        &:hover {
+          transition: 0.3s;
+          border-top: 4px solid $primary;
+        }
 
-            &:focus {
-              border: 1px solid $gray-400;
-              border-top: 4px solid $primary;
-              background-color: #fff;
-              width: 100%;
-            }
+        &:focus {
+          border: 1px solid $gray-400;
+          border-top: 4px solid $primary;
+          background-color: #fff;
+          width: 100%;
           }
         }
       }

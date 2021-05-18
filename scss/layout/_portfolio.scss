@@ -22,12 +22,11 @@
   }
 
   .worksPhoto {
-    position: relative;
   	background-color: rgba(57, 62, 93, 0.7);
   	padding: 0;
   	overflow: hidden;
     max-width: 220px;
-  	margin: 5px;
+  	margin: 5px 5px 50px 5px;
 
     &:not(:last-child) {
       margin-right: 50px;
