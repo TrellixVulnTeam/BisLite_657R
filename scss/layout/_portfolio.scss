@@ -1,14 +1,47 @@
 .mainPortfolio {
   padding: 0 5% 0 8.4%;
 
+  @include mQ(1500px) {
+    padding: 0;
+  }
+
+  .portfolioTitle {
+
+    @include mQ(600px) {
+      padding-left: 10px;
+    }
+  }
+
   .portfolioListItems {
 
-    .portfolioListItem {
+    @include mQ(1000px) {
+      padding-left: 10px;
+      font-weight: bold;
+      display: flex;
+      justify-content: center;
+    }
 
       .portfolioLink {
         border: none;
         color: $black;
         border-radius: 0;
+        font-size: 0.95rem;
+
+        @include mQ(770px) {
+          font-size: 0.8rem;
+        }
+
+        @include mQ(600px) {
+          font-size: 0.7rem;
+        }
+
+        @include mQ(450px) {
+          font-size: 0.55rem;
+        }
+
+        @include mQ(400px) {
+          font-size: 0.5rem;
+        }
 
         &:hover {
           background-color: $secondary;
@@ -16,7 +49,6 @@
 
         &:focus {
           background-color: $secondary;
-        }
       }
     }
   }
@@ -30,6 +62,10 @@
 
     &:not(:last-child) {
       margin-right: 50px;
+    }
+
+    @include mQ(1500px) {
+      margin: 5px;
     }
 
     @include mQ(1200px) {
@@ -53,11 +89,11 @@
     }
 
     @include mQ(460px) {
-      max-width: 300px;
+      max-width: 150px;
     }
 
-    @include mQ(350px) {
-      max-width: 220px;
+    @include mQ(320px) {
+      max-width: 100px;
     }
   }
 
@@ -87,6 +123,10 @@
   	-o-transition: all 0.3s ease-in-out;
   	-ms-transition: all 0.3s ease-in-out;
   	transition: all 0.3s ease-in-out;
+
+    @include mQ(600px) {
+      height: 70px;
+    }
   }
 
   .worksLink a {
@@ -109,5 +149,9 @@
   	-o-transform: translate(0px, 0px);
   	-ms-transform: translate(0px, 0px);
   	opacity: 1;
+    }
+
+    .portfolioArrow {
+
     }
   }

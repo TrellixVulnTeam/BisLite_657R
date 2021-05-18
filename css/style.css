@@ -12410,15 +12410,58 @@ a {
 .mainPortfolio {
   padding: 0 5% 0 8.4%;
 }
-.mainPortfolio .portfolioListItems .portfolioListItem .portfolioLink {
+@media screen and (max-width: 1500px) {
+  .mainPortfolio {
+    padding: 0;
+  }
+}
+@media screen and (max-width: 600px) {
+  .mainPortfolio .portfolioTitle {
+    padding-left: 10px;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .mainPortfolio .portfolioListItems {
+    padding-left: 10px;
+    font-weight: bold;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+.mainPortfolio .portfolioListItems .portfolioLink {
   border: none;
   color: #000;
   border-radius: 0;
+  font-size: 0.95rem;
 }
-.mainPortfolio .portfolioListItems .portfolioListItem .portfolioLink:hover {
+@media screen and (max-width: 770px) {
+  .mainPortfolio .portfolioListItems .portfolioLink {
+    font-size: 0.8rem;
+  }
+}
+@media screen and (max-width: 600px) {
+  .mainPortfolio .portfolioListItems .portfolioLink {
+    font-size: 0.7rem;
+  }
+}
+@media screen and (max-width: 450px) {
+  .mainPortfolio .portfolioListItems .portfolioLink {
+    font-size: 0.55rem;
+  }
+}
+@media screen and (max-width: 400px) {
+  .mainPortfolio .portfolioListItems .portfolioLink {
+    font-size: 0.5rem;
+  }
+}
+.mainPortfolio .portfolioListItems .portfolioLink:hover {
   background-color: #81e4ed;
 }
-.mainPortfolio .portfolioListItems .portfolioListItem .portfolioLink:focus {
+.mainPortfolio .portfolioListItems .portfolioLink:focus {
   background-color: #81e4ed;
 }
 .mainPortfolio .worksPhoto {
@@ -12430,6 +12473,11 @@ a {
 }
 .mainPortfolio .worksPhoto:not(:last-child) {
   margin-right: 50px;
+}
+@media screen and (max-width: 1500px) {
+  .mainPortfolio .worksPhoto {
+    margin: 5px;
+  }
 }
 @media screen and (max-width: 1200px) {
   .mainPortfolio .worksPhoto:not(:last-child) {
@@ -12454,12 +12502,12 @@ a {
 }
 @media screen and (max-width: 460px) {
   .mainPortfolio .worksPhoto {
-    max-width: 300px;
+    max-width: 150px;
   }
 }
-@media screen and (max-width: 350px) {
+@media screen and (max-width: 320px) {
   .mainPortfolio .worksPhoto {
-    max-width: 220px;
+    max-width: 100px;
   }
 }
 .mainPortfolio .worksPhoto img {
@@ -12482,6 +12530,11 @@ a {
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
+@media screen and (max-width: 600px) {
+  .mainPortfolio .worksLink {
+    height: 70px;
+  }
+}
 .mainPortfolio .worksLink a {
   font-size: 40px;
   color: #fff;
@@ -12500,4 +12553,31 @@ a {
   -o-transform: translate(0px, 0px);
   -ms-transform: translate(0px, 0px);
   opacity: 1;
+}
+.mainContactSection {
+  padding: 0 10% 0 14%;
+}
+@media screen and (max-width: 1400px) {
+  .mainContactSection {
+    padding: 0;
+  }
+}
+.mainContactSection .formInput {
+  height: 46px;
+}
+.mainContactSection .formInput:focus {
+  border: 1px solid #0d6efd;
+}
+.mainContactSection .textAreaInput {
+  height: 160px;
+}
+.mainContactSection .submitBtn {
+  -webkit-box-shadow: inset -3px -58px 63px -28px #40bad1;
+  box-shadow: inset -3px -58px 63px -28px #40bad1;
+}
+@media screen and (max-width: 768px) {
+  .mainContactSection .navigationOffice {
+    text-align: center;
+    padding: 20px 0;
+  }
 }

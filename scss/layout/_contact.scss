@@ -1,0 +1,33 @@
+.mainContactSection {
+  padding: 0 10% 0 14%;
+
+  @include mQ(1400px) {
+    padding: 0;
+  }
+
+  .formInput {
+    height: 46px;
+
+    &:focus {
+      border: 1px solid $primary;
+    }
+  }
+
+  .textAreaInput {
+    height: 160px;
+  }
+
+  .submitBtn {
+    -webkit-box-shadow: inset -3px -58px 63px -28px rgba(64,186,209,1);
+    -moz-box-shadow: inset -3px -58px 63px -28px rgba(64,186,209,1);
+    box-shadow: inset -3px -58px 63px -28px rgba(64,186,209,1);
+  }
+
+  .navigationOffice {
+
+    @include mQ(768px) {
+      text-align: center;
+      padding: 20px 0;
+    }
+  }
+}
