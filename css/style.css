@@ -12044,6 +12044,7 @@ a {
   }
 }
 .mainNav .navSec #navbarSupportedContent .navListItem .navLink {
+  border: 1px solid transparent;
   border-top: 4px solid transparent;
 }
 .mainNav .navSec #navbarSupportedContent .navListItem .navLink:hover {
@@ -12051,11 +12052,30 @@ a {
   transition: 0.3s;
   border-top: 4px solid #0d6efd;
 }
-.mainNav .navSec #navbarSupportedContent .navListItem .navLink:focus {
-  border: 1px solid #ced4da;
-  border-top: 4px solid #0d6efd;
-  background-color: #fff;
-  width: 100%;
+@media screen and (min-width: 993px) {
+  .mainNav .navSec #navbarSupportedContent .navListItem .navLink:focus {
+    border: 1px solid #ced4da;
+    border-top: 4px solid #0d6efd;
+    background-color: #fff;
+    width: 100%;
+  }
+}
+@media screen and (max-width: 993px) {
+  .mainNav .dropdown-menu {
+    border: none;
+    text-align: center;
+  }
+}
+@media screen and (max-width: 993px) {
+  .mainNav .dropdown-menu .dropdown-item {
+    font-weight: bold;
+    padding: 10px 0;
+  }
+}
+@media screen and (max-width: 993px) {
+  .mainNav .dropdown-menu .dropdown-divider {
+    display: none;
+  }
 }
 
 .mainBanner .carouselMain {

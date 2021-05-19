@@ -3,3 +3,9 @@
     @content;
   }
 }
+
+@mixin mQmin ($arg) {
+  @media screen and(min-width: $arg) {
+    @content;
+  }
+}

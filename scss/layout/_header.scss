@@ -37,6 +37,7 @@
     }
 
     .navLink {
+      border: 1px solid transparent;
       border-top: 4px solid transparent;
 
         &:hover {
@@ -45,12 +46,38 @@
         }
 
         &:focus {
-          border: 1px solid $gray-400;
-          border-top: 4px solid $primary;
-          background-color: #fff;
-          width: 100%;
+
+          @include mQmin(993px) {
+            border: 1px solid $gray-400;
+            border-top: 4px solid $primary;
+            background-color: #fff;
+            width: 100%;
+            }
           }
         }
+      }
+    }
+  }
+
+  .dropdown-menu {
+
+    @include mQ(993px) {
+      border: none;
+      text-align: center;
+    }
+
+    .dropdown-item {
+
+      @include mQ(993px) {
+        font-weight: bold;
+        padding: 10px 0;
+      }
+    }
+
+    .dropdown-divider {
+
+      @include mQ(993px) {
+        display: none;
       }
     }
   }
