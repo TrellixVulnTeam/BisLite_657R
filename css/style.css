@@ -12199,16 +12199,15 @@ a {
     text-align: right;
   }
 }
-.mainWorks .js-worksArrows {
+.mainWorks .worksArrows {
   position: relative;
 }
-.mainWorks .js-worksArrows li {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+.mainWorks .worksArrows ul li {
+  display: inline-block;
+  padding: 10px;
 }
 @media screen and (max-width: 500px) {
-  .mainWorks .js-worksArrows {
+  .mainWorks .worksArrows {
     padding-right: 50px;
   }
 }
@@ -12217,7 +12216,7 @@ a {
   float: left;
   overflow: hidden;
 }
-.mainWorks .js-worksWrapp {
+.mainWorks .worksWrapp {
   width: 100%;
   float: left;
 }
@@ -12229,7 +12228,7 @@ a {
   padding: 0;
   max-width: 220px;
 }
-.mainWorks .worksPhoto:hover {
+.mainWorks .worksPhoto:active {
   cursor: pointer;
 }
 @media screen and (max-width: 991px) {
@@ -12263,8 +12262,14 @@ a {
 }
 .mainWorks .sliderArrow img:hover {
   border: none;
-  height: 25px;
-  opacity: 0.7;
+  height: 20px;
+  cursor: pointer;
+}
+.mainWorks .sliderArrow.disabled {
+  opacity: 0.5;
+}
+.mainWorks .sliderArrow.active {
+  opacity: 1;
 }
 .mainWorks .worksPhoto img {
   width: 100%;

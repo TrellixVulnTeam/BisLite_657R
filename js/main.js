@@ -24,82 +24,85 @@
         }
     })
   }
-})()//SHOW MORE/LESS FUNCTION
+})();//SHOW MORE/LESS FUNCTION
 
-var controls = document.querySelector('.js-worksArrows'),
-    sliderWrapp = document.querySelector('.js-worksWrapp'),
-    allBox = sliderWrapp.children,
-    containerWidth = sliderWrapp.offsetWidth,
-    margin = 55,
-    photo = 0,
-    totalSlides = 0;
-    jumpSlideWidth = 0;
+(function(){
+  var controls = document.querySelector('.js-worksArrows'),
+      sliderWrapp = document.querySelector('.js-worksWrapp'),
+      allBox = sliderWrapp.children,
+      containerWidth = sliderWrapp.offsetWidth,
+      margin = 60,
+      photo = 0,
+      totalSlides = 0,
+      jumpSlideWidth = 0;
 
 
-  if (controls && sliderWrapp) {
-    responsive = [
-      {breakPoint:{width:0,photo:1}},
-      {breakPoint:{width:600,photo:2}},
-      {breakPoint:{width:1000,photo:4}}
-    ];
+    if (controls && sliderWrapp) {
+      responsive = [
+        {breakPoint:{width:0,photo:1}},
+        {breakPoint:{width:600,photo:2}},
+        {breakPoint:{width:1000,photo:4}}
+      ];
 
-    function load(){
-      for (var i = 0; i < responsive.length; i++) {
-        if(window.innerWidth > responsive[i].breakPoint.width) {
-          photo = responsive[i].breakPoint.photo;
+      function load(){
+        for (var i = 0; i < responsive.length; i++) {
+          if(window.innerWidth > responsive[i].breakPoint.width) {
+            photo = responsive[i].breakPoint.photo;
+          }
         }
+        start();
       }
-      start();
-    }
 
-    function start() {
-      var totalSliderWidth = 0;
-      for (var i = 0; i < allBox.length; i++) {
-            allBox[i].style.width = (containerWidth / photo)-margin + "px";
-            allBox[i].style.margin = (margin / 2) + "px";
-            totalSliderWidth += containerWidth / photo;
-            totalSlides++;
-      }
-      sliderWrapp.style.width = totalSliderWidth + "px";
+      function start() {
+        var totalSliderWidth = 0;
+        for (var i = 0; i < allBox.length; i++) {
+              allBox[i].style.width = (containerWidth / photo)-margin + "px";
+              allBox[i].style.margin = (margin / 2) + "px";
+              totalSliderWidth += containerWidth / photo;
+              totalSlides++;
+            }
 
-      var allSlides = Math.ceil(totalSlides / photo),
-          sliderLeft = document.querySelector('#js-sliderLeft'),
-          sliderRight = document.querySelector('#js-sliderRight'),
-          bothSliders = document.querySelector('.sliderArrow');
-          if (sliderLeft && sliderRight) {
-            for (var i = 1; i < allSlides; i++) {
-              var li = document.createElement("li");
-                  li.id = i;
-                  li.innerHTML = i;
-                  // console.log(li);
-                  li.setAttribute('onclick', 'controlSlides(this)');
-                  bothSliders.appendChild(li);
-                  if (i == 1) {
-                    li.className = "active";
+            sliderWrapp.style.width = totalSliderWidth + "px";
 
-                  }
+            sliderLeft = document.getElementById('js-sliderLeft');
+            if (sliderLeft) {
+              sliderLeft.addEventListener('click', function() {
+                moveToPrevSlide();
+              });
+            }
+
+            sliderRight = document.getElementById('js-sliderRight');
+            if (sliderRight)
+              sliderRight.addEventListener('click', function () {
+              moveToNextSlide();
+            });
+
+            function moveToNextSlide() {
+              if (jumpSlideWidth <2280) {
+                  jumpSlideWidth = jumpSlideWidth + containerWidth;
+                  sliderWrapp.style.marginLeft = -jumpSlideWidth +"px";
+                  sliderWrapp.style.transition = "0.5s";
+                  sliderRight.classList.remove('disabled');
+                  sliderLeft.classList.remove('disabled');
+                  console.log(jumpSlideWidth);
+              } else {
+                  sliderRight.classList.add('disabled');
               }
             }
 
-                function controlSlides(ele) {
-                    var li = bothSliders[0].children,
-                        active;
-                        // console.log(li);
-                    for (var i = 0; i < li.length; i++) {
-                      if (li[i].className == "") {
-
-                        active = i;
-
-                        li[i].className = "";
-                      }
-                    }
-                  ele.className = "active";
-                  var numb = (ele.id-1)-active;
-
-                }
+            function moveToPrevSlide() {
+              if (jumpSlideWidth > 0) {
+                  jumpSlideWidth = jumpSlideWidth - containerWidth;
+                  sliderWrapp.style.marginLeft = -jumpSlideWidth +"px";
+                  sliderWrapp.style.transition = "0.5s";
+                  sliderLeft.classList.remove('disabled');
+                  sliderRight.classList.remove('disabled');
+                  console.log(jumpSlideWidth);
+              } else {
+                  sliderLeft.classList.add('disabled');
               }
-
-
-    }
-
-    window.onload = load();
+            }
+          }
+        }
+      window.onload = load();
+})();
