@@ -6724,12 +6724,6 @@ textarea.form-control-lg {
           transform: none;
 }
 
-.clearfix::after {
-  display: block;
-  clear: both;
-  content: "";
-}
-
 .link-primary {
   color: #0d6efd;
 }
@@ -12147,25 +12141,44 @@ a {
     padding: 30px 0;
   }
 }
-.mainAbout .aboutContainer {
+.mainAbout .js-aboutContainer {
   width: 77%;
   padding-left: 50px;
 }
 @media screen and (max-width: 1500px) {
-  .mainAbout .aboutContainer {
+  .mainAbout .js-aboutContainer {
     width: 100%;
     padding: 0;
   }
 }
 @media screen and (max-width: 580px) {
-  .mainAbout .aboutContainer {
+  .mainAbout .js-aboutContainer {
     padding: 10px;
   }
 }
+.mainAbout .js-aboutContainer .aboutDiv.active .js-aboutText {
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  max-height: 100%;
+}
 @media screen and (max-width: 1500px) {
-  .mainAbout .aboutContainer .aboutDiv {
+  .mainAbout .js-aboutContainer .aboutDiv {
     padding: 20px;
   }
+}
+.mainAbout .js-aboutContainer .aboutDiv .aboutText {
+  max-height: 150px;
+  overflow: hidden;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+.mainAbout .js-aboutContainer .aboutDiv .readBtn {
+  display: inline-block;
+  margin-top: 10px;
+  color: #0d6efd;
+}
+.mainAbout .js-aboutContainer .aboutDiv .readBtn:hover {
+  cursor: pointer;
 }
 
 .mainWorks {
@@ -12186,28 +12199,38 @@ a {
     text-align: right;
   }
 }
+.mainWorks .js-worksArrows {
+  position: relative;
+}
+.mainWorks .js-worksArrows li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
 @media screen and (max-width: 500px) {
-  .mainWorks .worksArrows {
+  .mainWorks .js-worksArrows {
     padding-right: 50px;
   }
 }
+.mainWorks .worksSlider {
+  width: 100%;
+  float: left;
+  overflow: hidden;
+}
+.mainWorks .js-worksWrapp {
+  width: 100%;
+  float: left;
+}
 .mainWorks .worksPhoto {
+  float: left;
+  overflow: hidden;
   position: relative;
   background-color: rgba(57, 62, 93, 0.7);
   padding: 0;
   max-width: 220px;
-  margin: 5px;
 }
 .mainWorks .worksPhoto:hover {
   cursor: pointer;
-}
-.mainWorks .worksPhoto:not(:last-child) {
-  margin-right: 50px;
-}
-@media screen and (max-width: 1200px) {
-  .mainWorks .worksPhoto:not(:last-child) {
-    margin-right: 10px;
-  }
 }
 @media screen and (max-width: 991px) {
   .mainWorks .worksPhoto {
@@ -12234,6 +12257,14 @@ a {
   .mainWorks .worksPhoto {
     max-width: 220px;
   }
+}
+.mainWorks .sliderArrow img {
+  border-bottom: 5px solid transparent;
+}
+.mainWorks .sliderArrow img:hover {
+  border: none;
+  height: 25px;
+  opacity: 0.7;
 }
 .mainWorks .worksPhoto img {
   width: 100%;
@@ -12600,4 +12631,10 @@ a {
     text-align: center;
     padding: 20px 0;
   }
+}
+
+.clearfix:after {
+  content: "";
+  display: block;
+  clear: both;
 }

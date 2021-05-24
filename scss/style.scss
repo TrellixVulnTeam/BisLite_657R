@@ -14,3 +14,11 @@ $theme-colors: (
   "secondary": #81e4ed,
   "light": #e8ebf1
 );
+
+.clearfix{
+  &:after{
+    content: "";
+    display: block;
+    clear: both;
+  }
+}

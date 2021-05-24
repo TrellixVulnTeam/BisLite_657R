@@ -64,7 +64,7 @@
     padding: 30px 0;
     }
 
-  .aboutContainer {
+  .js-aboutContainer {
     width: 77%;
     padding-left: 50px;
 
@@ -79,8 +79,32 @@
 
     .aboutDiv {
 
+      &.active {
+        .js-aboutText{
+          transition: 0.5s;
+          max-height: 100%;
+        }
+      }
+
       @include mQ(1500px) {
         padding: 20px;
+      }
+
+      .aboutText {
+          max-height: 150px;
+          overflow: hidden;
+          transition: 0.5s;
+      }
+
+      .readBtn {
+        display: inline-block;
+        margin-top: 10px;
+        color: $primary;
+
+
+        &:hover {
+          cursor: pointer;
+        }
       }
     }
   }
@@ -104,32 +128,46 @@
     }
   }
 
-  .worksArrows {
+  .js-worksArrows {
+      position: relative;
+
+      li {
+        display: flex;
+      }
 
     @include mQ(500px) {
       padding-right: 50px;
     }
   }
 
+  .worksSlider {
+    width: 100%;
+    float: left;
+    overflow: hidden;
+  }
+
+  .js-worksWrapp {
+    width: 100%;
+    float: left;
+  }
+
   .worksPhoto {
+    float: left;
+    overflow: hidden;
     position: relative;
   	background-color: rgba(57, 62, 93, 0.7);
   	padding: 0;
     max-width: 220px;
-  	margin: 5px;
 
     &:hover {
     	cursor: pointer;
     }
 
-    &:not(:last-child) {
-      margin-right: 50px;
-    }
 
     @include mQ(1200px) {
 
       &:not(:last-child) {
-        margin-right: 10px;
+
       }
     }
 
@@ -152,6 +190,16 @@
 
     @include mQ(350px) {
       max-width: 220px;
+    }
+  }
+
+  .sliderArrow img{
+    border-bottom: 5px solid transparent;
+
+    &:hover {
+      border: none;
+      height: 25px;
+      opacity: 0.7;
     }
   }
 
