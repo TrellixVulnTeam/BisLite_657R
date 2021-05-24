@@ -26,67 +26,80 @@
   }
 })();//SHOW MORE/LESS FUNCTION
 
-(function(){
+
   var controls = document.querySelector('.js-worksArrows'),
       sliderWrapp = document.querySelector('.js-worksWrapp'),
-      allBox = sliderWrapp.children,
+      arrowRight = document.getElementById('js-sliderRight'),
+      arrowLeft = document.getElementById('js-sliderLeft'),
+      sliderWrappChildren = sliderWrapp.children,
       containerWidth = sliderWrapp.offsetWidth,
+      totalSliderWidth = 0,
       margin = 60,
       photo = 0,
       totalSlides = 0,
       jumpSlideWidth = 0;
 
 
-    if (controls && sliderWrapp) {
+      /*
+        Making the SlideShow responsive
+      */
       responsive = [
         {breakPoint:{width:0,photo:1}},
         {breakPoint:{width:600,photo:2}},
         {breakPoint:{width:1000,photo:4}}
       ];
 
+      /*
+        Aranging slideshow at window load
+      */
       function load(){
-        for (var i = 0; i < responsive.length; i++) {
-          if(window.innerWidth > responsive[i].breakPoint.width) {
-            photo = responsive[i].breakPoint.photo;
+        if (responsive) {
+          for (var i = 0; i < responsive.length; i++) {
+            if(window.innerWidth > responsive[i].breakPoint.width) {
+              photo = responsive[i].breakPoint.photo;
+            }
           }
+          start();
         }
-        start();
       }
 
+      /*
+        Calculating the Slideshow To be in one line overwflowing with margin
+      */
       function start() {
-        var totalSliderWidth = 0;
-        for (var i = 0; i < allBox.length; i++) {
-              allBox[i].style.width = (containerWidth / photo)-margin + "px";
-              allBox[i].style.margin = (margin / 2) + "px";
-              totalSliderWidth += containerWidth / photo;
-              totalSlides++;
+        if (sliderWrappChildren) {
+          for (var i = 0; i < sliderWrappChildren.length; i++) {
+                sliderWrappChildren[i].style.width = (containerWidth / photo) - margin + "px";
+                sliderWrappChildren[i].style.margin = (margin / 2) + "px";
+                totalSliderWidth += containerWidth / photo;
+                totalSlides++;
+              }
             }
 
             sliderWrapp.style.width = totalSliderWidth + "px";
 
-            sliderLeft = document.getElementById('js-sliderLeft');
-            if (sliderLeft) {
-              sliderLeft.addEventListener('click', function() {
+            if (arrowLeft) {
+              arrowLeft.addEventListener('click', function() {
                 moveToPrevSlide();
               });
             }
 
-            sliderRight = document.getElementById('js-sliderRight');
-            if (sliderRight)
-              sliderRight.addEventListener('click', function () {
+            if (arrowRight)
+              arrowRight.addEventListener('click', function () {
               moveToNextSlide();
             });
 
+
             function moveToNextSlide() {
-              if (jumpSlideWidth <2280) {
+              if (jumpSlideWidth < 2280) {
                   jumpSlideWidth = jumpSlideWidth + containerWidth;
                   sliderWrapp.style.marginLeft = -jumpSlideWidth +"px";
                   sliderWrapp.style.transition = "0.5s";
-                  sliderRight.classList.remove('disabled');
-                  sliderLeft.classList.remove('disabled');
+                  arrowRight.classList.remove('disabled');
+                  arrowLeft.classList.remove('disabled');
                   console.log(jumpSlideWidth);
               } else {
-                  sliderRight.classList.add('disabled');
+                  arrowRight.classList.add('disabled');
               }
             }
 
@@ -95,14 +108,12 @@
                   jumpSlideWidth = jumpSlideWidth - containerWidth;
                   sliderWrapp.style.marginLeft = -jumpSlideWidth +"px";
                   sliderWrapp.style.transition = "0.5s";
-                  sliderLeft.classList.remove('disabled');
-                  sliderRight.classList.remove('disabled');
+                  arrowLeft.classList.remove('disabled');
+                  arrowRight.classList.remove('disabled');
                   console.log(jumpSlideWidth);
               } else {
-                  sliderLeft.classList.add('disabled');
+                  arrowLeft.classList.add('disabled');
               }
             }
           }
-        }
       window.onload = load();
-})();
