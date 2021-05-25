@@ -156,7 +156,7 @@
     </div>
 
     <!--WORKS SECTION-->
-    <div class="container mainWorks">
+    <div class="container clearfix mainWorks">
       <div class="row py-3 border-bottom ">
         <div class="col-6 worksTitle">
           <h5 class="fw-bold"><img class="me-4" src="images/cursor.png" alt="cursor image">LATEST WORKS</h5>
@@ -170,7 +170,7 @@
           </div>
         </div>
       </div>
-        <div class="pt-4 pb-5 border-bottom clearfix worksSlider">
+        <div class="pt-4 pb-5 border-bottom worksSlider">
           <div class="js-worksWrapp">
           <div class="worksPhoto position-relative overflow-hidden">
             <img src="images/works1.png" alt="works image">
@@ -346,7 +346,45 @@
     </div>
   </div>
 
-  <!--TESTIMONIALS SECTION-->
+
+  <div class="container py-5 mainForm">
+    <div class="row">
+      <div class="col-8 col-lg-4 border border-2 border-primary p-2 offset-lg-4 offset-2 bg-secondary">
+        <p class="display-5 text-center pb-4">Sign Up</p>
+        <form action="/" method="get" class="fs-5 fw-bold js-form">
+          <div class="pb-3 mb-2 position-relative formContainer">
+          <label class="pb-2">Username:</label>
+          <input type="text" placeholder="username" class="form-control js-username">
+          <small class="position-absolute bottom-0 left-0 text-danger fw-bold">Error message</small>
+          </div>
+          <div class="pb-3 mb-2 position-relative formContainer">
+          <label class="pb-2">Email:</label>
+          <input type="email" name="" placeholder="email" class="form-control js-email">
+          <small class="position-absolute bottom-0 left-0 text-danger fw-bold">Error message</small>
+          </div>
+          <div class="pb-3 mb-2 position-relative formContainer">
+          <label class="pb-2">Password:</label>
+          <input type="password" placeholder="password" class="form-control js-password">
+          <small class="position-absolute bottom-0 left-0 text-danger fw-bold">Error message</small>
+          </div>
+          <div class="pb-3 mb-2 position-relative formContainer">
+          <label class="pb-2">Password-re:</label>
+          <input type="password" placeholder="repeat-password" class="form-control js-passRepeat">
+          <small class="position-absolute bottom-0 left-0 text-danger fw-bold">Error message</small>
+          </div>
+          <div class="pb-3 mb-2 position-relative formContainer">
+          <div class="form-check py-2">
+            <small class="position-absolute bottom-0 left-0 text-danger fw-bold">Error message</small>
+            <input class="form-check-input" type="checkbox" value="" id="js-checkbox">
+            <label class="form-check-label" for="flexCheckDefault">I agree to the Terms and Conditions</label>
+          </div>
+          <input type="submit"  value="Submit" class="form-control btn btn-primary fs-5 fw-bold js-submit">
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!--TESTIMONIALS SECTION-->
   <div class="container py-4 mainTestimonials">
     <div class="row">
       <div class="col-lg-6 col-md-5 testimonialSec">

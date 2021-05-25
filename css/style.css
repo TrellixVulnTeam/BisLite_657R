@@ -12398,6 +12398,10 @@ a {
   }
 }
 
+.mainForm .formContainer small, .mainForm .formContainer .small {
+  visibility: hidden;
+}
+
 .mainContact .contactContainer {
   padding: 0 2% 0 8%;
 }
