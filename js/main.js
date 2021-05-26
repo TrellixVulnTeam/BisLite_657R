@@ -102,7 +102,9 @@
                   }
                 }
 
-
+            /**
+              * When we click arrow move to the right, and when there is no more we disable it
+              */
             function moveToNextSlide() {
               if (jumpSlideWidth < 1900) {
                   jumpSlideWidth = jumpSlideWidth + containerWidth;
@@ -115,6 +117,9 @@
               }
             }
 
+            /**
+              * When we click arrow move to the left, and when there is no more we disable it
+              */
             function moveToPrevSlide() {
               if (jumpSlideWidth > 0) {
                   jumpSlideWidth = jumpSlideWidth - containerWidth;
@@ -128,6 +133,7 @@
             }
           }
       window.onload = load();
+      //SLIDESHOW FUNCTION
 
 
       var username = document.querySelector('.js-username');
@@ -136,12 +142,15 @@
           submit = document.querySelector('.js-submit'),
           myForm  = document.querySelector('.js-form'),
           passwordRepeat = document.querySelector('.js-passRepeat'),
-          checkbox = document.getElementById('js-checkbox'),
+          checkBox = document.getElementById('js-checkbox'),
           regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,20}$/;
 
       if (submit) {
         submit.addEventListener('click',formValidation);
 
+        /**
+          * Stops submiting without checking the form content first
+          */
         function formValidation(e) {
           e.preventDefault();
 
@@ -149,59 +158,98 @@
             uv : username.value,
             pv : password.value,
             ev : email.value,
-            pvr : passwordRepeat.value
+            pvr : passwordRepeat.value,
+            cv : checkBox.value
           }
 
+          /**
+            * We push errors into this array to check if all inputs are valid
+            */
+          var numOfErrors = [];
 
-          if (userData.uv.length < 6) {
-              setError(username, 'Your username must have at least 6 Characters');
-          } else if (userData.uv.length >= 20) {
-              setError(username, 'Your username must be less than 20 Characters');
-          } else {
-              setValid(username);
+          /**
+            * We are checking if all the conditions are met before the submit
+            */
+          if (username) {
+            if (userData.uv.length < 6) {
+                numOfErrors.push(setError(username, 'Your username must have at least 6 Characters'));
+            } else if (userData.uv.length >= 20) {
+                numOfErrors.push(setError(username, 'Your username must be less than 20 Characters'));
+            } else {
+                setValid(username);
+            }
           }
 
-          if (regex.test(userData.pv)) {
-              setValid(password);
-          } else {
-              setError(password, 'Must have one Uppercase, Lowercase and Num, 8 to 20 char');
+          if (password) {
+            if (regex.test(userData.pv)) {
+                setValid(password);
+            } else {
+                numOfErrors.push(setError(password, 'Must have one Uppercase, Lowercase and Num, 8 to 20 char'));
+            }
           }
 
-          if (userData.pvr == '') {
-              setError(passwordRepeat, 'This field is required!');
-          } else if (userData.pvr != userData.pv) {
-              setError(passwordRepeat, 'Passwords must match');
-          } else {
-              setValid(passwordRepeat);
+          if (passwordRepeat) {
+            if (userData.pvr == '') {
+                numOfErrors.push(setError(passwordRepeat, 'This field is required!'));
+            } else if (userData.pvr != userData.pv) {
+                numOfErrors.push(setError(passwordRepeat, 'Passwords must match'));
+            } else {
+                setValid(passwordRepeat);
+            }
           }
 
-          if (userData.ev == '') {
-              setError(email, 'This field is required!');
-          } else if (userData.ev.indexOf('@gmail.com') == -1) {
-              setError(email, 'Email must contain @gmail.com');
-          } else {
-              setValid(email);
+          if (email) {
+            if (userData.ev == '') {
+                numOfErrors.push(setError(email, 'This field is required!'));
+            } else if (userData.ev.indexOf('@gmail.com') == -1) {
+                numOfErrors.push(setError(email, 'Email must contain @gmail.com'));
+            } else {
+                setValid(email);
+            }
           }
 
-          if (setError != 0) {
-              console.log(setError);
+          if (checkBox) {
+            checkBox.addEventListener('click', function(e) {
+              if (checkBox.checked) {
+                setValid(checkBox);
+              } else {
+                numOfErrors.push(setError(checkBox, 'You must click agree to continue'));
+              }
+            });
+          }
+
+          /**
+            * Here we check number of errors to disable submiting before there is none
+            */
+          if (numOfErrors.length !== 0) {
+              console.log(numOfErrors.length);
           } else {
               myForm.submit();
           }
 
+          /**
+            * Message if the input is incorrect
+            */
           function setError(input, message) {
             var formControl = input.parentElement,
                 error = formControl.querySelector('small');
-                error.style.visibility = "visible";
-                input.style.border = "3px solid red";
-                error.innerHTML = message;
+                if (error) {
+                  error.style.visibility = "visible";
+                  input.style.border = "3px solid red";
+                  error.innerHTML = message;
+                }
               }
 
+            /**
+              * Message if the input is correct
+              */
           function setValid(input) {
             var formControl = input.parentElement,
                 error = formControl.querySelector('small');
-                input.style.border = "3px solid lightgreen";
-                error.style.visibility = "hidden";
+                if (error) {
+                  input.style.border = "3px solid lightgreen";
+                  error.style.visibility = "hidden";
+                }
               }
             }
-          }
+          }//FORM FUNCTION
