@@ -367,8 +367,31 @@
 
   .formContainer {
 
+    .form-control {
+
+      &.errorBorder {
+        border:3px solid $danger;
+      }
+
+      &.succesBorder {
+        border:3px solid $success;
+      }
+    }
+
     small {
       visibility: hidden;
+
+      &.error {
+        visibility: visible;
+      }
+    }
+
+    .successText {
+      visibility: hidden;
+
+      &.active {
+        visibility: visible;
+      }
     }
   }
 }

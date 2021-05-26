@@ -16,15 +16,14 @@
             if (triggerParent.className.includes('active')) {
                 triggerParent.classList.remove('active');
                 readBtnText.innerHTML = "Read More";
-
             } else {
                 triggerParent.classList.add('active');
                 readBtnText.innerHTML = "Read Less";
           }
         }
     })
-  }
-})();//SHOW MORE/LESS FUNCTION
+  }//READ MORE/LESS FUNCTION
+
 
 
   var controls = document.querySelector('.js-worksArrows'),
@@ -38,7 +37,6 @@
       photo = 0,
       totalSlides = 0,
       jumpSlideWidth = 0;
-
 
       /**
         *Making the SlideShow responsive
@@ -70,68 +68,79 @@
       function start() {
         if (sliderWrappChildren) {
           for (var i = 0; i < sliderWrappChildren.length; i++) {
-                sliderWrappChildren[i].style.width = (containerWidth / photo) - margin + "px";
-                sliderWrappChildren[i].style.margin = (margin / 2) + "px";
-                totalSliderWidth += containerWidth / photo;
-                totalSlides++;
-              }
-            }
+              sliderWrappChildren[i].style.width = (containerWidth / photo) - margin + "px";
+              sliderWrappChildren[i].style.margin = (margin / 2) + "px";
+              totalSliderWidth += containerWidth / photo;
+              totalSlides++;
+          }
             sliderWrapp.style.width = totalSliderWidth + "px";
+        }
 
-            /**
-              *Adding Functions to arrow left and right
-              */
-            if (arrowLeft) {
-              arrowLeft.addEventListener('click', function() {
-                moveToPrevSlide();
-              });
+        /**
+          *Adding Functions to arrow left and right
+          */
+        if (arrowLeft) {
+          arrowLeft.addEventListener('click', function() {
+            moveToPrevSlide();
+          });
+        }
+
+        if (arrowRight) {
+            arrowRight.addEventListener('click', function () {
+            moveToNextSlide();
+          });
+        }
+
+        var allSlides = Math.ceil(totalSlides / photo);
+
+        for ( i = 1 ; i <= allSlides; i++) {
+          var currentSlide;
+              currentSlide = i;
+
+          if (currentSlide <= 1) {
+              arrowLeft.classList.add('disabled');
+          }
+        }
+
+        /**
+          * When we click arrow move to the right, and when there is no more we disable it
+          */
+        function moveToNextSlide() {
+          if (jumpSlideWidth < 1900) {
+              jumpSlideWidth = jumpSlideWidth + containerWidth;
+              sliderWrapp.style.marginLeft = -jumpSlideWidth +"px";
+              sliderWrapp.style.transition = "0.5s";
+            if (arrowRight && arrowLeft) {
+                arrowRight.classList.remove('disabled');
+                arrowLeft.classList.remove('disabled');
             }
-
-            if (arrowRight)
-              arrowRight.addEventListener('click', function () {
-              moveToNextSlide();
-            });
-
-            var allSlides = Math.ceil(totalSlides / photo);
-            for ( i = 1 ; i <= allSlides; i++) {
-                  var currentSlide;
-                  currentSlide = i;
-
-                  if (currentSlide <= 1) {
-                    arrowLeft.classList.add('disabled');
-                  }
-                }
-
-            /**
-              * When we click arrow move to the right, and when there is no more we disable it
-              */
-            function moveToNextSlide() {
-              if (jumpSlideWidth < 1900) {
-                  jumpSlideWidth = jumpSlideWidth + containerWidth;
-                  sliderWrapp.style.marginLeft = -jumpSlideWidth +"px";
-                  sliderWrapp.style.transition = "0.5s";
-                  arrowRight.classList.remove('disabled');
-                  arrowLeft.classList.remove('disabled');
-              } else {
-                  arrowRight.classList.add('disabled');
-              }
-            }
-
-            /**
-              * When we click arrow move to the left, and when there is no more we disable it
-              */
-            function moveToPrevSlide() {
-              if (jumpSlideWidth > 0) {
-                  jumpSlideWidth = jumpSlideWidth - containerWidth;
-                  sliderWrapp.style.marginLeft = -jumpSlideWidth + "px";
-                  sliderWrapp.style.transition = "0.5s";
-                  arrowLeft.classList.remove('disabled');
-                  arrowRight.classList.remove('disabled');
-              } else {
-                  arrowLeft.classList.add('disabled');
-              }
+          } else {
+            if (arrowRight) {
+                arrowRight.classList.add('disabled');
             }
           }
+        }
+
+        /**
+          * When we click arrow move to the left, and when there is no more we disable it
+          */
+        function moveToPrevSlide() {
+          if (jumpSlideWidth > 0) {
+              jumpSlideWidth = jumpSlideWidth - containerWidth;
+              sliderWrapp.style.marginLeft = -jumpSlideWidth + "px";
+              sliderWrapp.style.transition = "0.5s";
+            if (arrowLeft && arrowRight) {
+                arrowLeft.classList.remove('disabled');
+                arrowRight.classList.remove('disabled');
+            }
+          } else {
+            if (arrowLeft) {
+                arrowLeft.classList.add('disabled');
+            }
+          }
+        }
+      }
+
       window.onload = load();
       //SLIDESHOW FUNCTION
 
@@ -143,23 +152,23 @@
           myForm  = document.querySelector('.js-form'),
           passwordRepeat = document.querySelector('.js-passRepeat'),
           checkBox = document.getElementById('js-checkbox'),
+          successText = document.querySelector('.js-successText'),
           regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,20}$/;
 
       if (submit) {
-        submit.addEventListener('click',formValidation);
+          submit.addEventListener('click',formValidation);
 
         /**
           * Stops submiting without checking the form content first
           */
-        function formValidation(e) {
-          e.preventDefault();
+      function formValidation(e) {
+        e.preventDefault();
 
           var userData = {
             uv : username.value,
             pv : password.value,
             ev : email.value,
             pvr : passwordRepeat.value,
-            cv : checkBox.value
           }
 
           /**
@@ -209,13 +218,16 @@
           }
 
           if (checkBox) {
-            checkBox.addEventListener('click', function(e) {
-              if (checkBox.checked) {
+            checkBox.addEventListener('change', isBoxChecked, false);
+
+            function isBoxChecked() {
+              var isChecked = checkBox.checked;
+              if (isChecked) {
                 setValid(checkBox);
               } else {
                 numOfErrors.push(setError(checkBox, 'You must click agree to continue'));
               }
-            });
+            }
           }
 
           /**
@@ -224,32 +236,39 @@
           if (numOfErrors.length !== 0) {
               console.log(numOfErrors.length);
           } else {
-              myForm.submit();
+            myForm.reset();
+            if (successText) {
+              successText.classList.add('active');
+            }
           }
 
           /**
+            * @param input - the input we want to affect
+            * @param message - the message we want to present when there is an error
             * Message if the input is incorrect
             */
           function setError(input, message) {
             var formControl = input.parentElement,
                 error = formControl.querySelector('small');
-                if (error) {
-                  error.style.visibility = "visible";
-                  input.style.border = "3px solid red";
-                  error.innerHTML = message;
-                }
-              }
+            if (error) {
+                error.classList.add('error');
+                input.classList.add('errorBorder');
+                error.innerHTML = message;
+            }
+          }
 
-            /**
-              * Message if the input is correct
-              */
+          /**
+            * @param input - the input we want to affect
+            * Message if the input is correct
+            */
           function setValid(input) {
             var formControl = input.parentElement,
                 error = formControl.querySelector('small');
-                if (error) {
-                  input.style.border = "3px solid lightgreen";
-                  error.style.visibility = "hidden";
-                }
-              }
+            if (error) {
+                input.classList.add('succesBorder');
+                error.classList.remove('error');
             }
-          }//FORM FUNCTION
+          }
+        }
+      }//FORM FUNCTION
+})()
