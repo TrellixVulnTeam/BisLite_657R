@@ -298,7 +298,9 @@
           var circleButton = [...circleBtns.children];
 
           /**
-            *
+            * We are making our circles clikable and changing slides when we do click them
+            * Updating active circle onCLick
+            * Stoping the slider onclick
             */
           circleBtns.addEventListener('click',function(e) {
             if (circleBtns) {
