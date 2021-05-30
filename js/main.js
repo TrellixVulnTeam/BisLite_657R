@@ -218,20 +218,16 @@
           }
 
           if (checkBox) {
-            checkBox.addEventListener('change', isBoxChecked, false);
-
-            function isBoxChecked() {
-              var isChecked = checkBox.checked;
-              if (isChecked) {
-                setValid(checkBox);
-              } else {
-                numOfErrors.push(setError(checkBox, 'You must click agree to continue'));
-              }
+            var isChecked = checkBox.checked;
+            if (isChecked) {
+              setValid(checkBox);
+            } else {
+              numOfErrors.push(setError(checkBox, 'You must click agree to continue'));
             }
           }
 
           /**
-            * Here we check number of errors to disable submiting before there is none
+            * Here we check number of errors to disable submiting before the input is valid
             */
           if (numOfErrors.length !== 0) {
               console.log(numOfErrors.length);
@@ -243,13 +239,13 @@
           }
 
           /**
+            * Message if the input is incorrect
             * @param input - the input we want to affect
             * @param message - the message we want to present when there is an error
-            * Message if the input is incorrect
             */
           function setError(input, message) {
             var formControl = input.parentElement,
-                error = formControl.querySelector('small');
+                error = formControl && formControl.querySelector('small');
             if (error) {
                 error.classList.add('error');
                 input.classList.add('errorBorder');
@@ -258,12 +254,12 @@
           }
 
           /**
-            * @param input - the input we want to affect
             * Message if the input is correct
+            * @param input - the input we want to affect
             */
           function setValid(input) {
             var formControl = input.parentElement,
-                error = formControl.querySelector('small');
+                error = formControl && formControl.querySelector('small');
             if (error) {
                 input.classList.add('succesBorder');
                 error.classList.remove('error');
@@ -271,4 +267,162 @@
           }
         }
       }//FORM FUNCTION
+
+
+    var slides = document.querySelectorAll('.js-carouselItem'),
+        totalSlides = slides.length,
+        slidePosition = 0,
+        arrowPrev = document.getElementById('js-carouselBtnPrev'),
+        arrowNext = document.getElementById('js-carouselBtnNext'),
+        timer = setInterval(autoPlay,3000),
+        circleBtns = document.querySelector('.js-circleBtns');
+
+        /**
+          * In this function we are creating circles for the slider and appending them to the empty parent in index.html file
+          */
+          function circleIndicator() {
+            if (totalSlides && circleBtns) {
+              for (var i = 0; i < totalSlides; i++) {
+                var circle = document.createElement('div');
+                  circle && circle.classList.add('circleButton');
+                    circle.id = i;
+                    if (i == 0) {
+                      circle.classList.add('active');
+                    }
+                circleBtns.appendChild(circle);
+              }
+            }
+          }
+          circleIndicator();
+
+          var circleButton = [...circleBtns.children];
+
+          /**
+            *
+            */
+          circleBtns.addEventListener('click',function(e) {
+            if (circleBtns) {
+              if (e.target === circleBtns) return;
+                  var targetCircle = e.target;
+                if (targetCircle && circleButton) {
+                    var targetCircleIndex = findIndex(targetCircle, circleButton);
+                    slidePosition = targetCircleIndex;
+                    updateSlidePosition();
+                    updateCircleIndicator();
+                    resetTimer();
+                }
+              }
+          });
+
+        /**
+          * Updating the active circle when the slideshow is either clicked or autoplayed
+          */
+        function updateCircleIndicator() {
+          if (circleBtns.children) {
+            for (var i = 0; i < circleButton.length; i++) {
+              circleButton[i].classList.remove('active');
+            }
+            circleButton[slidePosition].classList.add('active');
+          }
+        }
+
+        /**
+          * Statements if we click the prev arrow
+          */
+        if (arrowPrev) {
+          arrowPrev.addEventListener('click',function () {
+            moveToPrevSlide();
+            updateCircleIndicator();
+            resetTimer();
+          });
+        }
+
+        /**
+          * Statements of we click the next arrow
+          */
+        if (arrowNext) {
+          arrowNext.addEventListener('click',function () {
+            moveToNextSlide();
+            updateCircleIndicator();
+            resetTimer();
+          });
+        }
+
+        /**
+          * Gives the class of active to the visible slide
+          */
+        function updateSlidePosition() {
+          if (slides && totalSlides) {
+            for(var i=0; i<totalSlides; i++){
+       	       	 slides[i].classList.remove("active");
+       	    }
+             slides[slidePosition].classList.add("active");
+          }
+        }
+
+        /**
+          * onClick move to the next slide
+          */
+        function moveToNextSlide() {
+          if (slidePosition === totalSlides - 1) {
+            slidePosition = 0;
+          } else {
+            slidePosition++;
+          }
+          updateSlidePosition();
+        }
+
+        /**
+          * onCLick move to the previous slide
+          */
+        function moveToPrevSlide() {
+          if (slidePosition === 0) {
+            slidePosition = totalSlides - 1;
+          } else {
+            slidePosition--;
+          }
+          updateSlidePosition();
+        }
+
+        /**
+          * when we are hovering over the slide stop the timer
+          */
+        for (var slide of slides) {
+          if (slide) {
+            slide.addEventListener('mouseover', function() {
+              resetTimer();
+            });
+          }
+        }
+
+        /**
+          * Resets the timer and starts it after 3 seconds
+          */
+        function resetTimer() {
+          if (timer) {
+            clearInterval(timer);
+            timer = setInterval(autoPlay,3000);
+          }
+        }
+
+        /**
+          * Functions that make the slider automove and updates the active circle
+          */
+        function autoPlay() {
+          moveToNextSlide();
+          updateCircleIndicator();
+        }
+
+        /**
+          * Here we are giving indexes to all the items inside of an array
+          * @param item, item we are targeting in an array
+          * @param items, the array wich we are giving the indexes
+          */
+        function findIndex(item, items) {
+          for (var index = 0; index < items.length; index++) {
+          if (item === items[index]) {
+              return index;
+            }
+          }
+        }//END OF CAROUSEL FUNCTION
 })()
