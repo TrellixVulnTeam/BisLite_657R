@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .mainBanner {
 
   .carouselMain {
@@ -439,3 +440,446 @@
     }
   }
 }//END OF FORM SECTION
+=======
+.mainBanner {
+
+  .carouselMain {
+    padding: 2% 6.5% 2% 8.5%;
+    position: relative;
+
+
+    @include mQ(1500px) {
+      padding: 3% 0;
+    }
+
+    .carousel-inner {
+      padding: 0;
+      width: auto;
+
+      .carouselItem {
+        display: none;
+
+        &.active {
+          display: block;
+          animation: fadeVisibility 0.5s;
+        }
+      }
+    }
+
+      .carouselArrows {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        position: absolute;
+        top:50%;
+        transform: translateY(-50%);
+
+
+        button {
+          padding: 5px 20px;
+          border-radius: 50%;
+          border: 3px solid $white;
+        }
+      }
+
+      .circleBtns {
+        div {
+          display: inline-block;
+          width:25px;
+          height: 25px;
+          background-color: $white;
+          border-radius:50%;
+          text-align: center;
+          line-height: 25px;
+          margin:0 5px;
+          transition: background-color 0.6s ease;
+
+          &.active, &:hover {
+            background-color: $primary;
+          }
+        }
+      }
+
+
+      @keyframes fadeVisibility {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+          transform: opacity linear;
+        }
+      }
+
+    .bannerText {
+
+      @include mQ(1400px) {
+        font-size: 3rem;
+      }
+
+      @include mQ(1200px) {
+        font-size: 2.5rem;
+      }
+
+      @include mQ(1000px) {
+        font-size: 1.8rem;
+      }
+
+      @include mQ(768px) {
+        font-size: 1.4rem;
+      }
+
+      @include mQ(530px) {
+        font-size: 1.2rem;
+      }
+
+      @include mQ(460px) {
+        font-size: 1rem;
+      }
+
+      @include mQ(390px) {
+        font-size: 0.9rem;
+      }
+
+      @include mQ(350px) {
+        font-size: 0.75rem;
+      }
+
+      @include mQ(300px) {
+        font-size: 0.65rem;
+      }
+    }
+  }
+}//END OF BANNER SECTION
+
+.mainAbout {
+  padding: 22px 0 10px 0;
+
+  @include mQ(1500px) {
+    padding: 30px 0;
+    }
+
+  .js-aboutContainer {
+    width: 77%;
+    padding-left: 50px;
+
+    @include mQ(1500px) {
+      width: 100%;
+      padding: 0;
+    }
+
+    @include mQ(580px) {
+      padding: 10px;
+    }
+
+    .aboutDiv {
+
+      &.active {
+        .js-aboutText{
+          transition: 0.5s;
+          max-height: 100%;
+        }
+      }
+
+      @include mQ(1500px) {
+        padding: 20px;
+      }
+
+      .aboutText {
+          max-height: 150px;
+          overflow: hidden;
+          transition: 0.5s;
+      }
+
+      .readBtn {
+        display: inline-block;
+        margin-top: 10px;
+        color: $primary;
+
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}//END OF ABOUT SECTION
+
+.mainWorks {
+  padding: 0.5% 5% 0 8.5%;
+
+  @include mQ(1500px) {
+    padding: 30px 0;
+  }
+
+  .worksTitle {
+
+    @include mQ(590px) {
+      text-align: center;
+    }
+
+    @include mQ(460px) {
+      text-align: right;
+    }
+  }
+
+  .worksArrows {
+      position: relative;
+
+    ul {
+
+      li {
+        display: inline-block;
+        padding: 10px;
+      }
+    }
+
+    @include mQ(500px) {
+      padding-right: 50px;
+    }
+  }
+
+  .worksSlider {
+    width: 100%;
+    float: left;
+    overflow: hidden;
+  }
+
+  .worksWrapp {
+    width: 100%;
+    float: left;
+  }
+
+  .worksPhoto {
+    float: left;
+    overflow: hidden;
+    position: relative;
+  	background-color: rgba(57, 62, 93, 0.7);
+  	padding: 0;
+    max-width: 220px;
+
+    &:active {
+    	cursor: pointer;
+    }
+
+    @include mQ(991px) {
+      max-width: 300px;
+      margin: 10px;
+    }
+
+    @include mQ(768px) {
+      max-width: 230px;
+    }
+
+    @include mQ(650px) {
+      max-width: 200px;
+    }
+
+    @include mQ(460px) {
+      max-width: 300px;
+    }
+
+    @include mQ(350px) {
+      max-width: 220px;
+    }
+  }
+
+  .sliderArrow img {
+    border-bottom: 5px solid transparent;
+
+    &:hover {
+      border: none;
+      height: 20px;
+      cursor: pointer;
+    }
+  }
+
+  .sliderArrow {
+
+    &.disabled {
+      opacity: 0.5;
+    }
+
+    &.active {
+      opacity: 1;
+    }
+  }
+
+  .worksPhoto img {
+    width: 100%;
+  	-webkit-transition: all 4s ease;
+  	-moz-transition: all 4s ease;
+  	-o-transition: all 4s ease;
+  	-ms-transition: all 4s ease;
+  	transition: all 4s ease;
+  }
+
+  .worksLink {
+    position: absolute;
+  	height: 90px;
+  	bottom: 0;
+  	z-index: 1;
+  	opacity: 0;
+  	transform: translate(0px, 70px);
+  	-webkit-transform: translate(0px, 70px);
+  	-moz-transform: translate(0px, 70px);
+  	-o-transform: translate(0px, 70px);
+  	-ms-transform: translate(0px, 70px);
+  	-webkit-transition: all 0.3s ease-in-out;
+  	-moz-transition: all 0.3s ease-in-out;
+  	-o-transition: all 0.3s ease-in-out;
+  	-ms-transition: all 0.3s ease-in-out;
+  	transition: all 0.3s ease-in-out;
+  }
+
+  .worksLink a {
+  	font-size: 40px;
+  	color: #fff;
+  	position: relative;
+  	margin: 0 auto;
+  	width: 100%;
+  	top: 13px;
+  }
+
+  .worksPhoto:hover .worksLink {
+  	transform: translate(0px, 0px);
+  	-webkit-transform: translate(0px, 0px);
+  	-moz-transform: translate(0px, 0px);
+  	-o-transform: translate(0px, 0px);
+  	-ms-transform: translate(0px, 0px);
+  	opacity: 1;
+  }
+}//END OF WORKS SECTION
+
+.mainTestimonials {
+  padding: 0.5% 5% 0 8%;
+
+  @include mQ(1500px) {
+    padding: 40px 0;
+  }
+
+    .testimonialSec {
+
+      @include mQ(570px) {
+        padding: 20px 10px 20px 40px;
+      }
+    }
+
+  .clientSec {
+
+    @include mQ(767px) {
+      padding-top: 50px;
+    }
+
+    .clientTitle {
+
+      @include mQ(570px) {
+        padding-left: 30px;
+      }
+    }
+  }
+
+  .clientContainer {
+
+    @include mQ(1100px) {
+      padding: 0;
+    }
+
+    @include mQ(767px) {
+      text-align: center;
+    }
+
+      .clientLogo {
+        padding: 0;
+
+        img {
+
+          @include mQ(1200px) {
+            max-width: 130px;
+          }
+
+          @include mQ(1100px) {
+            max-width: 120px;
+          }
+
+          @include mQ(992px) {
+            max-width: 125px;
+          }
+
+          @include mQ(767px) {
+            max-width: 200px;
+          }
+
+          @include mQ(500px) {
+            max-width: 120px;
+          }
+
+          @include mQ(390px) {
+            max-width: 100px;
+          }
+        }
+      }
+    }
+  }//END OF TESTIMONIALS SECTION
+
+.mainAdd {
+  margin-top: 3%;
+  margin-bottom: 3%;
+
+  @include mQ(1500px) {
+    width: 100%;
+  }
+
+  .addText {
+
+    @include mQ(770px) {
+      padding-bottom: 10px;
+    }
+  }
+
+  .addBtn {
+    -webkit-box-shadow: inset -3px -58px 63px -28px rgba(64,186,209,1);
+    -moz-box-shadow: inset -3px -58px 63px -28px rgba(64,186,209,1);
+    box-shadow: inset -3px -58px 63px -28px rgba(64,186,209,1);
+
+    img {
+      @include mQ(950px) {
+        padding-bottom: 10px;
+      }
+    }
+  }
+}//END OF ADD SECTION--
+
+.mainForm {
+
+  .formContainer {
+
+    .form-control {
+
+      &.errorBorder {
+        border:3px solid $danger;
+      }
+
+      &.succesBorder {
+        border:3px solid $success;
+      }
+    }
+
+    small {
+      visibility: hidden;
+
+      &.error {
+        visibility: visible;
+      }
+    }
+
+    .successText {
+      visibility: hidden;
+
+      &.active {
+        visibility: visible;
+      }
+    }
+  }
+}//END OF FORM SECTION
+>>>>>>> 64f6f211dc62b06512820c56f034fd14b89f4b1f
