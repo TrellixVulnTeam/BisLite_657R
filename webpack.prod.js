@@ -14,7 +14,7 @@ module.exports = merge (common, {
         path: path.resolve(__dirname, "dist")
     },
     plugins: [
-        new MiniCssExtractPlugin({ filename: "[name].[contentHash].css"}),
+        new MiniCssExtractPlugin({ filename: "[name].[contenthash].css"}),
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             template: "./src/template.html",
