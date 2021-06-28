@@ -219,14 +219,6 @@
     	cursor: pointer;
     }
 
-
-    @include mQ(1200px) {
-
-      &:not(:last-child) {
-
-      }
-    }
-
     @include mQ(991px) {
       max-width: 300px;
       margin: 10px;
